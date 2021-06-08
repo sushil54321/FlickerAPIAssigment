@@ -51,3 +51,4 @@ Unit tests for the remaining classes can be written in the same way as those 3 c
 ## Does it have a good way to send data across Activities?
 
 Yes. To show a higher resolution photo, `PhotoDetailsActivity` only takes a photo id from `RecentPhotosActivity`. This is to avoid the `TransactionTooLargeException` which easily happens since Android 7 if we send a large amount of data between Android components. That photo id is then used to retrieve more infos about photo via `PhotoRepository`. `PhotoRepository` is backed behind by a good caching mechanism. After we fetch a list of photos from Flickr, they will be put into a memory cache to quickly access later on `PhotosDetailsActivity`. However, if somehow the app is killed by the system after being pushed into background, given a photo id, the app can retrieve the photo back via a SQLite-based database (implemented via Room).
+# FlickerAPIAssigment
